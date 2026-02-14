@@ -33,13 +33,4 @@ jobs:
           r2-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
           r2-bucket: ${{ secrets.R2_BUCKET_NAME }}
           source-dir: src
-          destination-dir:  ./dist
-
-      - name: Sync to Cloudflare R2
-        env:
-          R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
-          R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
-        run: |
-          aws s3 sync dist s3://${{ secrets.R2_BUCKET_NAME }} \
-            --endpoint-url https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com \
-            --delete
+          destination-dir:  ./
