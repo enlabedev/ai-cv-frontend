@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
+import Chatbot from '../components/Chatbot';
 
 interface Props {
   title?: string;
@@ -87,7 +88,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://enlabe.c
       </div>
 
       <slot />
-
+      <Chatbot client:load />
       <footer class="bg-brand-dark dark:bg-black py-12 text-center border-t border-brand-dark/10 dark:border-gray-800 transition-colors">
         <div class="container mx-auto px-4">
           <p class="mt-4 text-gray-400 dark:text-gray-600 text-sm">
