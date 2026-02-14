@@ -1,43 +1,102 @@
-# Astro Starter Kit: Minimal
+# Enrique Lazo Bello - Senior Software Engineer Portfolio
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A high-performance, fully responsive personal portfolio and resume website built with modern web technologies. Designed with a focus on speed, accessibility, and clean architecture utilizing the **Astro Islands** pattern.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+## 🚀 Features
+
+* **Blazing Fast Performance:** Built with Astro for static site generation (SSG) with zero JavaScript shipped by default for static sections (Hero, Experience, Projects).
+* **Partial Hydration (React Islands):** Interactive components like the Theme Toggle, Contact Form, and floating AI Chatbot are built with React and only hydrate when necessary.
+* **Custom AI Assistant:** An integrated floating chatbot connected to a custom knowledge base API. Supports querying profile details and uploading external files (CV/JSON) for deep context analysis.
+* **Dynamic Blog Fetching:** Automatically pulls the latest articles from the Dev.to API.
+* **Dark/Light Mode:** Native Tailwind CSS dark mode with system preference detection and `localStorage` persistence, avoiding FOUC (Flash of Unstyled Content).
+* **Tailwind CSS & Custom Animations:** Highly maintainable utility-first styling with custom `@keyframes` (animated background blobs).
+
+## 🛠️ Tech Stack
+
+* **Framework:** [Astro](https://astro.build/)
+* **UI Library:** [React](https://reactjs.org/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Icons:** [Lucide React](https://lucide.dev/)
+* **Markdown Parsing:** [React Markdown](https://github.com/remarkjs/react-markdown)
+* **Language:** [TypeScript](https://www.typescriptlang.org/)
+
+## 📂 Project Structure
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── components/          # Reusable components
+│   ├── ui/              # Atomic UI components (Buttons, Badges, Inputs)
+│   ├── Chatbot.tsx      # Floating AI Assistant (React Island)
+│   ├── Header.tsx       # Navigation and Theme toggle (React Island)
+│   ├── ExperienceItem.astro # Static Timeline item
+│   └── ProjectCard.astro    # Static Project showcase card
+├── hooks/
+│   └── useChat.ts       # Custom React hook for AI Assistant state management
+├── layouts/
+│   └── MainLayout.astro # Global shell (HTML head, SEO, background animations)
+├── pages/
+│   └── index.astro      # Main landing page orchestrating all components
+└── styles/
+    └── global.css       # Tailwind base, components, and custom keyframes
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## ⚙️ Getting Started
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Prerequisites
 
-Any static assets, like images, can be placed in the `public/` directory.
+* Node.js (v18 or higher)
+* npm, pnpm, or yarn
 
-## 🧞 Commands
+### Installation
 
-All commands are run from the root of the project, from a terminal:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/enlabedev/portfolio.git
+   cd portfolio
+   ```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-## 👀 Want to learn more?
+3. Set up Environment Variables:
+   Create a `.env` file in the root of the project and add your API endpoints for the custom Chatbot:
+   ```env
+   PUBLIC_API_URL=http://localhost:3000
+   PUBLIC_API_CHAT=http://localhost:3001
+   ```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Open `http://localhost:4321` in your browser to see the result.
+
+## 📦 Building for Production
+
+To create a production-ready build, run:
+
+```bash
+npm run build
+```
+
+You can preview the production build locally using:
+
+```bash
+npm run preview
+```
+
+## 🌐 Deployment
+
+This project is optimized to be deployed on platforms like **Vercel**, **Netlify**, or **Cloudflare Pages**. 
+
+For Vercel (Recommended):
+1. Push your code to a GitHub repository.
+2. Import the project in Vercel.
+3. Vercel will automatically detect the Astro framework and configure the build settings.
+4. Add your `PUBLIC_API_URL` and `PUBLIC_API_CHAT` in the Vercel Environment Variables settings.
+5. Deploy!
