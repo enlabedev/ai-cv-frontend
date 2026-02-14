@@ -1,1 +1,98 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+@theme {
+  --color-brand-blue: #005CB0;
+  --color-brand-dark: #333333;
+  --color-brand-light: #E0E0E0;
+  --color-brand-red: #D92626;
+  --font-poppins: 'Poppins', sans-serif;
+  --animate-blob: blob 7s infinite;
+}
+
+@layer base {
+  :root {
+    --brand-blue: #005CB0;
+    --brand-dark: #333333;
+    --brand-light: #E0E0E0;
+    --brand-red: #D92626  ;
+    --font-poppins: 'Poppins', sans-serif;
+    --blob-animation: blob 7s infinite;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Configuración base del cuerpo */
+  .root-body {
+    @apply bg-brand-light text-brand-dark transition-colors duration-300;
+    @apply dark:bg-brand-dark dark:text-gray-100 font-poppins;
+    @apply selection:bg-brand-blue/30 selection:text-brand-blue;
+  }
+}
+
+@layer components {
+  /* Layout principal */
+  .main-layout {
+    @apply relative overflow-hidden min-h-screen flex flex-col;
+  }
+
+  /* Contenedor de Blobs de fondo */
+  .bg-blob-container {
+    @apply absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none;
+  }
+
+  /* Estilos base de los Blobs con animación */
+  .blob {
+    @apply absolute rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob;
+    @apply w-96 h-96 transition-colors duration-700;
+  }
+
+  /* Navegación y Header tipo "Glass" */
+  .glass-header {
+    @apply w-full flex justify-center py-6 px-4 z-50 fixed top-0 left-0 right-0;
+    @apply bg-white/80 dark:bg-brand-dark/80 backdrop-blur-md shadow-sm;
+    @apply transition-all duration-300;
+  }
+
+  .nav-pill {
+    @apply container max-w-5xl flex justify-between items-center;
+    @apply bg-white dark:bg-brand-dark rounded-full px-6 py-2;
+    @apply shadow-lg border border-gray-100 dark:border-gray-700;
+  }
+
+  .nav-link-underline {
+    @apply relative hover:text-brand-blue dark:hover:text-white transition-colors;
+    @apply after:content-[''] after:absolute after:left-0 after:-bottom-1;
+    @apply after:h-0.5 after:w-0 after:transition-all after:bg-brand-blue dark:after:bg-white;
+    @apply hover:after:w-full;
+  }
+
+  .brand-logo-circle {
+    @apply w-10 h-10 rounded-full flex items-center justify-center;
+    @apply bg-brand-blue dark:bg-white text-white dark:text-brand-blue;
+    @apply font-bold text-xl transition-transform hover:scale-110;
+  }
+}
+
+@layer utilities {
+  /* Animación de Blobs */
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+
+  @keyframes blob {
+    0% { transform: translate(0px, 0px) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+    100% { transform: translate(0px, 0px) scale(1); }
+  }
+}

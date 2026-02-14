@@ -1,17 +1,114 @@
 ---
-
+import MainLayout from '../layouts/MainLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/ui/SectionTitle.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ExperienceItem from '../components/ExperienceItem.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import ContactForm from '../components/ContactForm.tsx';
+import BlogPosts from '../components/BlogPosts.astro';
+import { experiences, projects, services } from '../data/portfolio';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<MainLayout title="Enrique Lazo Bello - Senior Software Engineer">
+  <Header />
+
+  <main class="relative flex-grow">
+    <Hero />
+
+    <section id="about" class="min-h-screen py-[100px] bg-white dark:bg-gray-900 transition-colors">
+      <div class="container max-w-4xl mx-auto px-4">
+        <SectionTitle title="About Me" subtitle="Know About Me And My Tech Stack">
+          <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-user"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </SectionTitle>
+        <div class="prose dark:prose-invert max-w-none text-center text-gray-600 dark:text-gray-400 text-lg mb-12">
+          <p>
+            I am a <strong class="text-brand-blue dark:text-white font-semibold">Senior Software Engineer</strong> with over 10 years of experience combining technical architecture and team leadership. I have a proven track record in the <strong class="text-brand-blue dark:text-white font-semibold">banking, retail, and fintech sectors</strong>, where I've successfully reduced operational costs and secured critical applications. I specialize in <strong class="text-brand-blue dark:text-white font-semibold">legacy system modernization</strong> and designing scalable cloud architectures across AWS, GCP, and Azure. Driven by innovation, I maintain an active R&D portfolio focused on <strong class="text-brand-blue dark:text-white font-semibold">Artificial Intelligence (LLMs, AI Agents) and Automation</strong>.
+          </p>
+        </div>
+        <div class="flex flex-col items-center gap-6">
+            <h3 class="text-xl font-medium text-gray-900 dark:text-white">My <strong class="font-bold">Tech Stack</strong> includes:</h3>
+            
+            <div class="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl">
+               <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" alt="Django" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" alt="MongoDB" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" alt="GCP" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+               <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" height="28" class="hover:scale-105 transition-transform shadow-sm h-[28px] w-auto">
+            </div>
+          </div>
+      </div>
+    </section>
+
+    
+
+    <section id="projects" class="py-[100px] bg-brand-light dark:bg-brand-dark">
+      <div class="container max-w-5xl mx-auto px-4">
+        <SectionTitle title="Innovation Portfolio" subtitle="Explore My Latest Labs & R&D">
+          <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </SectionTitle>
+        <div class="space-y-12">
+          {projects.map(project => <ProjectCard {...project} />)}
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="py-[100px] bg-white dark:bg-neutral-800">
+      <div class="container max-w-5xl mx-auto px-4">
+        <SectionTitle title="Professional Experience" subtitle="Overview Of My Career Journey">
+          <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-graduation-cap"><path d="M22 10l-10-5-10 5 10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </SectionTitle>
+        <div class="relative">
+          <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-gray-200 dark:bg-gray-700 transform md:-translate-x-1/2"></div>
+          {experiences.map(exp => <ExperienceItem {...exp} />)}
+        </div>
+      </div>
+    </section>
+
+    <section id="posts" class="py-[100px]">
+      <div class="container max-w-5xl mx-auto px-4">
+        <SectionTitle title="Latest Posts" subtitle="Read My Latest Articles">
+           <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-newspaper"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+        </SectionTitle>
+        <BlogPosts />
+      </div>
+    </section>
+
+	<section id="services" class="py-[100px] bg-white dark:bg-gray-900">
+      <div class="container max-w-5xl mx-auto px-4">
+        <SectionTitle title="Core Services" subtitle="How I Can Help Your Business">
+           <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-wrench"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </SectionTitle>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {services.map(service => (
+            <ServiceCard title={service.title} description={service.description}>
+              <img slot="icon" src={service.icon} alt={service.title} />
+            </ServiceCard>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    
+
+    <section id="contact" class="py-[100px] bg-brand-light dark:bg-brand-dark">
+      <div class="container max-w-3xl mx-auto px-4 text-center">
+        <SectionTitle title="Contact Me" subtitle="Have Questions Or Ideas? Let's Talk! 🚀">
+           <svg slot="icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="lucide lucide-message-circle"><path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/></svg>
+        </SectionTitle>
+        <div class="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-10 shadow-sm border border-gray-100 dark:border-gray-700 text-left">
+          <ContactForm client:visible />
+        </div>
+      </div>
+    </section>
+  </main>
+</MainLayout>

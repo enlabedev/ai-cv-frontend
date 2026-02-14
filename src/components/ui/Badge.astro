@@ -1,0 +1,16 @@
+---
+interface Props {
+  text: string;
+  variant?: 'blue' | 'gray';
+}
+
+const { text, variant = 'blue' } = Astro.props;
+
+const styles = variant === 'blue' 
+  ? "bg-brand-blue/10 dark:bg-gray-700 text-brand-blue dark:text-gray-300" 
+  : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400";
+---
+
+<span class={`px-3 py-1 rounded-full text-sm font-medium ${styles}`}>
+  {text}
+</span>
