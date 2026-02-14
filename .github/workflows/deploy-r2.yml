@@ -40,6 +40,6 @@ jobs:
           R2_ACCOUNT_ID: ${{ secrets.R2_ACCOUNT_ID }}
           R2_BUCKET_NAME: ${{ secrets.R2_BUCKET_NAME }}
         run: |
-          aws s3 sync dist s3://$R2_BUCKET_NAME \
-            --endpoint-url https://$R2_ACCOUNT_ID.r2.cloudflarestorage.com \
+          aws s3 sync dist s3://${{ secrets.R2_BUCKET_NAME }} \
+            --endpoint-url https://${{ secrets.R2_ACCOUNT_ID }}.r2.cloudflarestorage.com \
             --delete
