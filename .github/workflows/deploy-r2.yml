@@ -26,12 +26,14 @@ jobs:
         run: npm run build
 
       - name: Configure AWS Credentials for R2
-        uses: aws-actions/configure-aws-credentials@v4
+        uses: ryand56/r2-upload-action@latest
         with:
-          aws-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
-          aws-region: auto
-          mask-aws-account-id: 'no'
+          r2-account-id: ${{ secrets.R2_ACCOUNT_ID }}
+          r2-access-key-id: ${{ secrets.R2_ACCESS_KEY_ID }}
+          r2-secret-access-key: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+          r2-bucket: ${{ secrets.R2_BUCKET_NAME }}
+          source-dir: src
+          destination-dir:  ./dist
 
       - name: Sync to Cloudflare R2
         env:
