@@ -12,8 +12,8 @@ export const Input: React.FC<InputProps> = ({ icon, ...props }) => (
       </div>
     )}
     <input 
-      className="w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-brand-blue transition-all outline-none"
       {...props} 
+      className={`w-full pl-12 pr-4 py-4 rounded-xl border border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-400 focus:ring-2 focus:ring-brand-blue transition-all outline-none ${props.className || ''}`}
     />
   </div>
 );
